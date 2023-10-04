@@ -1,0 +1,15 @@
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\ChuongTrinhDatGheXemPhim.exe.config
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\ChuongTrinhDatGheXemPhim.exe
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\ChuongTrinhDatGheXemPhim.pdb
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.AssemblyReference.cache
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.Form1.resources
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.Properties.Resources.resources
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.GenerateResource.cache
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.CoreCompileInputs.cache
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.exe
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.pdb
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.dll
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.xml
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.CopyComplete
