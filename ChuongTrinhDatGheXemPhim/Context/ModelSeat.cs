@@ -5,21 +5,21 @@ using System.Linq;
 
 namespace ChuongTrinhDatGheXemPhim.Context
 {
-    public partial class Model1 : DbContext
+    public partial class ModelSeat : DbContext
     {
-        public Model1()
-            : base("name=Model1")
+        public ModelSeat()
+            : base("name=Model12")
         {
         }
 
-        public virtual DbSet<Categorys> Categorys { get; set; }
-        public virtual DbSet<Seats> Seats { get; set; }
+        public virtual DbSet<Category> Categorys { get; set; }
+        public virtual DbSet<Seat> Seats { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Categorys>()
+            modelBuilder.Entity<Category>()
                 .HasMany(e => e.Seats)
-                .WithOptional(e => e.Categorys)
+                .WithOptional(e => e.Category)
                 .HasForeignKey(e => e.LoaiGhe);
         }
     }

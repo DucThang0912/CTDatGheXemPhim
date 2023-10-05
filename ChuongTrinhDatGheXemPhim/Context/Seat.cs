@@ -6,14 +6,15 @@ namespace ChuongTrinhDatGheXemPhim.Context
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Seats
+    public partial class Seat
     {
         [Key]
-        [StringLength(20)]
-        public string MaGhe { get; set; }
+        public int MaGhe { get; set; }
 
         [StringLength(50)]
-        public string HangGhe { get; set; }
+        public string TenGhe { get; set; }
+
+        public int? HangGhe { get; set; }
 
         public int? SoGhe { get; set; }
 
@@ -21,6 +22,6 @@ namespace ChuongTrinhDatGheXemPhim.Context
 
         public bool? TrangThai { get; set; }
 
-        public virtual Categorys Categorys { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

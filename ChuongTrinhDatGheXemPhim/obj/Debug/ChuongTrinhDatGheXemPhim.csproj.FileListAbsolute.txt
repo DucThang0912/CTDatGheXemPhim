@@ -13,3 +13,18 @@ D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinh
 D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.xml
 D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.SqlServer.xml
 D:\Code\Winform C#\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.CopyComplete
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\ChuongTrinhDatGheXemPhim.exe.config
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\ChuongTrinhDatGheXemPhim.exe
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\ChuongTrinhDatGheXemPhim.pdb
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.dll
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.SqlServer.dll
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.xml
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\bin\Debug\EntityFramework.SqlServer.xml
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.AssemblyReference.cache
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.Form1.resources
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.Properties.Resources.resources
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.GenerateResource.cache
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.CoreCompileInputs.cache
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.csproj.CopyComplete
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.exe
+C:\Code\Hutech\C#\CTDatGheXemPhim\ChuongTrinhDatGheXemPhim\obj\Debug\ChuongTrinhDatGheXemPhim.pdb
