@@ -28,7 +28,8 @@ namespace ChuongTrinhDatGheXemPhim
             loadSeatNormal();
             loadSeatVIP();
             loadSeatSweetBox();
-            notAllowedSeat();
+            // notAllowedSeat();
+            LoadSeatsDataBase();
         }
 
         private void loadSeatNormal()
@@ -113,89 +114,137 @@ namespace ChuongTrinhDatGheXemPhim
             }
         }
         
-        void notAllowedSeat()
-        {
-            try
-            {
-                //đọc danh sách từ file txt đã lưu trước đó
-                //file lưu mặc định ở \ChuongTrinhDatGheXemPhim\bin\Debug\selected_seats.txt
-                string filePath = "selected_seats.txt";
-                if (System.IO.File.Exists(filePath))
-                {
-                    // Nếu tệp đã tồn tại, thì mới đọc file
-                    string[] selectedSeatNames = System.IO.File.ReadAllLines(filePath);
+        //void notAllowedSeat()
+        //{
+        //    try
+        //    {
+        //        //đọc danh sách từ file txt đã lưu trước đó
+        //        //file lưu mặc định ở \ChuongTrinhDatGheXemPhim\bin\Debug\selected_seats.txt
+        //        string filePath = "selected_seats.txt";
+        //        if (System.IO.File.Exists(filePath))
+        //        {
+        //            // Nếu tệp đã tồn tại, thì mới đọc file
+        //            string[] selectedSeatNames = System.IO.File.ReadAllLines(filePath);
 
-                    foreach (string seatName in selectedSeatNames)
-                    {
-                        // Tìm ghế và đặt màu đã chọn
-                        Button seatButton = tableLayoutPanelGheNormal.Controls.OfType<Button>().FirstOrDefault(button => button.Name == seatName);
-                        if (seatButton != null)
-                        {
-                            seatButton.BackColor = Color.DarkGray;
-                            selectedSeats.Add(seatButton);
-                            seatButton.FlatAppearance.BorderSize = 0;
-                            seatButton.Text = "X";
-                        }
+        //            foreach (string seatName in selectedSeatNames)
+        //            {
+        //                // Tìm ghế và đặt màu đã chọn
+        //                Button seatButton = tableLayoutPanelGheNormal.Controls.OfType<Button>().FirstOrDefault(button => button.Name == seatName);
+        //                if (seatButton != null)
+        //                {
+        //                    seatButton.BackColor = Color.DarkGray;
+        //                    selectedSeats.Add(seatButton);
+        //                    seatButton.FlatAppearance.BorderSize = 0;
+        //                    seatButton.Text = "X";
+        //                }
 
-                        seatButton = tableLayoutPanelGheVIP.Controls.OfType<Button>().FirstOrDefault(button => button.Name == seatName);
-                        if (seatButton != null)
-                        {
-                            seatButton.BackColor = Color.DarkGray;
-                            selectedSeats.Add(seatButton);
-                            seatButton.FlatAppearance.BorderSize = 0;
-                            seatButton.Text = "X";
-                        }
+        //                seatButton = tableLayoutPanelGheVIP.Controls.OfType<Button>().FirstOrDefault(button => button.Name == seatName);
+        //                if (seatButton != null)
+        //                {
+        //                    seatButton.BackColor = Color.DarkGray;
+        //                    selectedSeats.Add(seatButton);
+        //                    seatButton.FlatAppearance.BorderSize = 0;
+        //                    seatButton.Text = "X";
+        //                }
 
-                        seatButton = tableLayoutPanelGheSweetBox.Controls.OfType<Button>().FirstOrDefault(button => button.Name == seatName);
-                        if (seatButton != null)
-                        {
-                            seatButton.BackColor = Color.DarkGray;
-                            selectedSeats.Add(seatButton);
-                            seatButton.FlatAppearance.BorderSize = 0;
-                            seatButton.Text = "X";
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
-        }
+        //                seatButton = tableLayoutPanelGheSweetBox.Controls.OfType<Button>().FirstOrDefault(button => button.Name == seatName);
+        //                if (seatButton != null)
+        //                {
+        //                    seatButton.BackColor = Color.DarkGray;
+        //                    selectedSeats.Add(seatButton);
+        //                    seatButton.FlatAppearance.BorderSize = 0;
+        //                    seatButton.Text = "X";
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Lỗi: " + ex.Message);
+        //    }
+        //}
         bool IsSweetBox(string seatName)
         {
             return seatName.Contains("K");
         }
-        void resetSelectedSeats()
+
+        private void LoadSeatsDataBase()
         {
+            var context = new ModelSeat();
             try
             {
-                foreach (var seatButton in selectedSeats)
+                TableLayoutPanel[] tableLayouts = { tableLayoutPanelGheNormal, tableLayoutPanelGheVIP, tableLayoutPanelGheSweetBox };
+                foreach (TableLayoutPanel tableLayoutPanel in tableLayouts)
                 {
-                    if (seatButton.BackColor == Color.DarkGray && seatButton.Text == "X")
+                    foreach (Button seatButton in tableLayoutPanel.Controls.OfType<Button>())
                     {
-                        if (IsSweetBox(seatButton.Name))
+                        string seatName = seatButton.Name;
+
+                        int seatStatus = GetSeatStatusFromDatabase(context, seatName);
+
+                        if (seatStatus == 1)
                         {
-                            seatButton.BackColor = Color.LightPink; 
+                            //Đã đặt
+                            seatButton.BackColor = Color.DarkGray;
+                            seatButton.FlatAppearance.BorderSize = 0;
+                            seatButton.Text = "X";
                         }
                         else
                         {
-                            seatButton.BackColor = Color.LightYellow; 
+                            // Ghế trống
+                            if (IsSweetBox(seatButton.Name))
+                            {
+                                seatButton.BackColor = Color.LightPink;
+                            }
+                            else
+                            {
+                                seatButton.BackColor = Color.LightYellow;
+                            }
                         }
-                        seatButton.Text = seatButton.Name;
-                        seatButton.FlatAppearance.BorderSize = 2; 
                     }
                 }
-                selectedSeats.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
+        int GetSeatCategoryID(int tableLayoutIndex)
+        {
+            int categoryID;
 
-     
+            switch (tableLayoutIndex)
+            {
+                case 0:
+                    categoryID = 1; //thường
+                    break;
+                case 1:
+                    categoryID = 2; //vip 
+                    break;
+                case 2:
+                    categoryID = 3;//sweetbox
+                    break;
+                default:
+                    categoryID = 0;
+                    break;
+            }
 
+            return categoryID;
+        }
+        private int GetSeatStatusFromDatabase(ModelSeat context, string seatName)
+        {
+
+            var seat = context.Seats.FirstOrDefault(s => s.TenGhe == seatName);
+
+            if (seat != null)
+            {
+                return (bool)seat.TrangThai ? 1 : 0;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         private void SeatButton_Click(object sender, EventArgs e)
         {
             try
@@ -224,11 +273,12 @@ namespace ChuongTrinhDatGheXemPhim
                     }
                     else if(seatButton.BackColor == Color.Gray && seatButton.Text == "X")
                     {
-                        MessageBox.Show("Ghế đã được chọn!");
+                        MessageBox.Show("Ghế đã có người!");
                     }
                     else
                     {
-                        MessageBox.Show("Ghế đã có người!");
+                        MessageBox.Show("Ghế đã chọn!");
+
                     }
                 }
             }
@@ -238,47 +288,33 @@ namespace ChuongTrinhDatGheXemPhim
             } 
         }
 
+
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
            if(MessageBox.Show("Bạn có muốn đóng ứng dụng?","Xác nhận",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //lưu danh sách những ghế đã chọn vào 1 file txt
-                System.IO.File.WriteAllLines("selected_seats.txt", selectedSeats.ConvertAll(s => s.Name));
+                e.Cancel = false;
             }
             else
             {
                 e.Cancel = true;
             }
         }
-        int GetSeatCategoryIDFromPosition(int tableLayoutIndex)
-        {
-            int categoryID;
 
-            switch (tableLayoutIndex)
-            {
-                case 0:
-                    categoryID = 1; //thường
-                    break;
-                case 1: 
-                    categoryID = 2; //vip 
-                    break;
-                case 2: 
-                    categoryID = 3;//sweebox
-                    break;
-                default:
-                    categoryID = 0;
-                    break;
-            }
-
-            return categoryID;
-        }
         private void buttonThanhToan_Click(object sender, EventArgs e)
         {
+            if(MessageBox.Show("Bạn có chắn chắn thanh toán không?","Xác nhận",MessageBoxButtons.YesNo)!= DialogResult.Yes )
+            {
+                return;
+            }
+
             var context = new ModelSeat();
             using (var  transaction = context.Database.BeginTransaction())
             {
                 try
                 {
+                    int seatID = 1;
                     TableLayoutPanel[] tableLayouts = { tableLayoutPanelGheNormal, tableLayoutPanelGheVIP, tableLayoutPanelGheSweetBox };
                     foreach (TableLayoutPanel tableLayoutPanel in tableLayouts)
                     {
@@ -286,19 +322,16 @@ namespace ChuongTrinhDatGheXemPhim
                         {
                             if (seatButton.BackColor == Color.DarkRed)
                             {
-                                // Lấy thông tin từ tên ghế
-                                int seatID = context.Seats.Max(s => (int?)s.MaGhe) ?? 0 + 1;
+                                
                                 string seatName = seatButton.Name;
                                 int row = Convert.ToInt32(seatName[0]);
                                 int seatNumber = int.Parse(seatName.Substring(1));
-                                // Lấy ID của loại ghế (ví dụ: thường, vip, sweetbox)
-                                int tableLayoutIndex = tableLayouts.ToList().IndexOf(tableLayoutPanel); // Xác định vị trí của TableLayoutPanel
-                                int seatCategoryID = GetSeatCategoryIDFromPosition(tableLayoutIndex); // Thay thế bằng cách lấy ID tương ứng từ người dùng
+                                int tableLayoutIndex = tableLayouts.ToList().IndexOf(tableLayoutPanel); 
+                                int seatCategoryID = GetSeatCategoryID(tableLayoutIndex); 
 
-                                // Kiểm tra màu ghế để xác định trạng thái
+                                // Kiểm tra màu ghế 
                                 bool seatStatus = (seatButton.BackColor == Color.DarkRed);
 
-                                // Tạo đối tượng Seat và thêm vào DbSet
                                 Seat newSeat = new Seat
                                 {
                                     MaGhe = seatID,
@@ -309,20 +342,16 @@ namespace ChuongTrinhDatGheXemPhim
                                     TrangThai = seatStatus
                                 };
 
-                                // Lưu đối tượng Seat vào CSDL (bạn cần cấu hình DbContext và DbSet cho bảng Seats)
                                 context.Seats.Add(newSeat);
                                 seatButton.BackColor = Color.Gray;
-                                //string query = $"DBCC CHECKIDENT ('[MaGhe]', RESEED, {seatID - 1});";
-                                //context.Database.ExecuteSqlCommand(query);
+                                seatID++;
                             }
                         }
-                    }
-                    
-                    // Lưu các ghế vào CSDL
+                    }               
                     context.SaveChanges();
                     transaction.Commit();
-                    resetSelectedSeats();
-                    MessageBox.Show("Đã lưu vào CSDL");
+                    MessageBox.Show("Đã thanh toán thành công!","Thành công",MessageBoxButtons.OK);
+                 
                 }
                 catch (Exception ex)
                 {
@@ -330,6 +359,60 @@ namespace ChuongTrinhDatGheXemPhim
                     MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
-        }     
+        }
+
+        private void buttonHuy_Click(object sender, EventArgs e)
+        {
+            var context = new ModelSeat();
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    TableLayoutPanel[] tableLayouts = { tableLayoutPanelGheNormal, tableLayoutPanelGheVIP, tableLayoutPanelGheSweetBox };
+                    foreach (TableLayoutPanel tableLayoutPanel in tableLayouts)
+                    {
+                        foreach (Button seatButton in tableLayoutPanel.Controls.OfType<Button>())
+                        {
+                            if (seatButton.BackColor == Color.Gray)
+                            {
+                                if (IsSweetBox(seatButton.Name))
+                                {
+                                    seatButton.BackColor = Color.LightPink;
+                                }
+                                else
+                                {
+                                    seatButton.BackColor = Color.LightYellow;
+                                }
+                                seatButton.Text = seatButton.Name;
+                                seatButton.FlatAppearance.BorderSize = 2;
+                                //lấy id từ name
+                                int seatID = Convert.ToInt32(context.Seats.FirstOrDefault(p => p.TenGhe == seatButton.Name).MaGhe);
+
+                                var removeSeatDataBase = context.Seats.FirstOrDefault(p => p.MaGhe == seatID);
+                                if (removeSeatDataBase != null)
+                                {
+                                    context.Seats.Remove(removeSeatDataBase);
+                                }
+                               
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không có ghế nào để hủy");
+                                return;
+
+                            }
+                        }
+                    }
+                    context.SaveChanges();
+                    transaction.Commit();
+                    MessageBox.Show("Đã hủy chọn ghế");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+        }
     }
 }

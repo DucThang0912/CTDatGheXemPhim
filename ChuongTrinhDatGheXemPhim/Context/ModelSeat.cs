@@ -8,7 +8,7 @@ namespace ChuongTrinhDatGheXemPhim.Context
     public partial class ModelSeat : DbContext
     {
         public ModelSeat()
-            : base("name=Model12")
+            : base("name=Model13")
         {
         }
 
